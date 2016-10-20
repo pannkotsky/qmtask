@@ -4,6 +4,7 @@ from django.db import models
 class Good(models.Model):
     name = models.CharField(max_length=50)
     ordinary_price = models.IntegerField()
+    pricing_unit = models.IntegerField(default=1)
 
     def __str__(self):
         return self.name
@@ -12,6 +13,7 @@ class Good(models.Model):
 class Bucket(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
 
 
 class Purchase(models.Model):
