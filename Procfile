@@ -1,0 +1,1 @@
+web: gunicorn qmtask.wsgi --log-file -
