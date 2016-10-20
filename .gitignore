@@ -10,3 +10,5 @@
 .tox
 .idea/
 /*/migrations/
+.env
+staticfiles
