@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market</title>
+</head>
+
+<body>
+    {% autoescape on %}
+    <div class="container">
+        <h3>Choose some goods to buy</h3>
+        <form method="post" class="form-horizontal">
+        {% csrf_token %}
+            <div class="form-group">
+                <label for="good" class="control-label col-sm-6">Good</label>
+                <div class="col-sm-6">
+                    <select id="good" class="form-control" name="good">
+                        {%  for good in goods %}
+                            <option value="{{ good.id }}">{{ good.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div id="quantity" class="form-group">
+                <label for="quantity" class="control-label col-sm-6">Quantity (kg)</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="number" value="1" min="1" name="quantity"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-info">Add good</button>
+                <a href="/" class="btn btn-success">I'm done</a>
+            </div>
+
+        </form>
+        <h4>Total value so far: ${{ total }}</h4>
+    </div>
+    {% endautoescape %}
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'market/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'market/css/style.css' %}" />
+
+    <script src="{% static 'market/js/script.js' %}"></script>
+</body>
+</html>
