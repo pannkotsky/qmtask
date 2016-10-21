@@ -1,3 +1,4 @@
+from django import shortcuts
 from django.views import generic
 
 from market import models
@@ -26,7 +27,7 @@ class IndexView(generic.TemplateView):
         total = calculate_total(purchases, goods, specials)
 
         context.update({'goods': goods,
-                        'total': '{0:.02f}'.format(total / 100)})
+                        'total': '{0:.02f}'.format(total / 100.0)})
 
         return context
 
@@ -56,7 +57,7 @@ class IndexView(generic.TemplateView):
             bucket.active = False
             bucket.save()
 
-        return self.get(request, *args, **kwargs)
+        return shortcuts.redirect('index', *args, **kwargs)
 
 
 def calculate_total(purchases, goods, specials):
