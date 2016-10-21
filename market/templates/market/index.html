@@ -16,7 +16,7 @@
                 <div class="col-sm-6">
                     <select id="good" class="form-control" name="good">
                         {%  for good in goods %}
-                            <option value="{{ good.id }}">{{ good.name }}</option>
+                            <option value="{{ good.id }}" data-good-pu="{{ good.pricing_unit }}">{{ good.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
