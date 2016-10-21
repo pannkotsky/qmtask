@@ -57,5 +57,3 @@ Admin page is available at https://fathomless-ocean-86436.herokuapp.com/admin
 Admin username: *admin*
 
 Admin password: *P@ssw0rd*
-
-Try not to mess too much! :)
