@@ -9,6 +9,9 @@ class Good(models.Model):
     def __str__(self):
         return self.name
 
+    def __unicode__(self):
+        return self.__str__()
+
 
 class Bucket(models.Model):
     created = models.DateTimeField(auto_now_add=True)
@@ -33,3 +36,6 @@ class SpecialOffer(models.Model):
 
     def __str__(self):
         return '{0}x{1}'.format(self.condition_good, self.condition_good_count)
+
+    def __unicode__(self):
+        return self.__str__()

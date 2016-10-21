@@ -52,8 +52,10 @@ class IndexView(generic.TemplateView):
                                                good_count=quantity)
                 new_purchase.save()
         elif 'clear' in request.POST:
+            # remove all purchases from current bucket
             purchases.delete()
         elif 'end' in request.POST:
+            # deactivate current bucket, new one will be created
             bucket.active = False
             bucket.save()
 
