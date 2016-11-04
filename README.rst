@@ -6,7 +6,7 @@ it should be basket, but I screwed up at some point and it was too much of a
 hassle to rename everything).
 
 Admin can add any goods to the database, specifying its name, ordinary price
-(in cents) and pricing unit (i. e. how many units of the good you will get if
+(in cents) and pricing unit (i.e. how many units of the good you will get if
 you pay its price). Pricing unit may be needed to specify amount of good in
 grams and set the price for a kilogram, thus both amount and price are stored
 as integers. By default pricing unit is equal to 1.
