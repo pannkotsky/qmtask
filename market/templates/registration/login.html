@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{%  block content %}
+
+    {% if form.errors %}
+        <p class="alert alert-danger">Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+        <p class="alert alert-danger">Please login to see this page.</p>
+    {% endif %}
+
+    <h3>Enter your credentials</h3>
+
+    <form method="post" action="{% url 'login' %}" class="form-horizontal" role="form">
+    {% csrf_token %}
+
+        {% for field in form %}
+
+            <div class="form-group {% if field.errors %}has-error{% endif %}">
+                <label class="control-label col-sm-5">{{ field.label_tag }}</label>
+                <div class="col-sm-7">{{ field }}</div>
+                <div>{{ field.errors }}</div>
+            </div>
+
+        {% endfor %}
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Log in</button>
+        </div>
+
+    </form>
+
+    <div>
+        or <a href="{% url 'register' %}">register</a> for an account
+    </div>
+
+{% endblock %}
+
+

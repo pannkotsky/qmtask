@@ -1,50 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Market</title>
-</head>
+{% extends "base.html" %}
 
-<body>
-    {% autoescape on %}
-    <div class="container">
-        <h3>Choose some goods to buy</h3>
-        <form method="post" class="form-horizontal">
-        {% csrf_token %}
-            <div class="form-group">
-                <label for="good" class="control-label col-sm-6">Good</label>
-                <div class="col-sm-6">
-                    <select id="good" class="form-control" name="good">
-                        {%  for good in goods %}
-                            <option value="{{ good.id }}" data-good-pu="{{ good.pricing_unit }}">{{ good.name }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+{%  block content %}
+
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                </ul>
             </div>
+        </div>
+    </nav>
 
-            <div id="quantity" class="form-group">
-                <label for="quantity" class="control-label col-sm-6">Quantity (kg)</label>
-                <div class="col-sm-6">
-                    <input class="form-control" type="number" step="0.001" value="1" min="0" name="quantity"/>
-                </div>
+    <h3>Choose some goods to buy</h3>
+    <form method="post" class="form-horizontal">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="good" class="control-label col-sm-6">Good</label>
+            <div class="col-sm-6">
+                <select id="good" class="form-control" name="good">
+                    {%  for good in goods %}
+                        <option value="{{ good.id }}" data-good-pu="{{ good.pricing_unit }}">{{ good.name }}</option>
+                    {% endfor %}
+                </select>
             </div>
+        </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-info" name="add">Add good</button>
-                <button type="submit" class="btn btn-warning" name="clear">Clear</button>
-                <button type="submit" class="btn btn-success" name="end">I'm done</button>
+        <div id="quantity" class="form-group">
+            <label for="quantity" class="control-label col-sm-6">Quantity (kg)</label>
+            <div class="col-sm-6">
+                <input class="form-control" type="number" step="0.001" value="1" min="0" name="quantity"/>
             </div>
+        </div>
 
-        </form>
-        <h4>Total value so far: ${{ total }}</h4>
-    </div>
-    {% endautoescape %}
+        <div class="form-group">
+            <button type="submit" class="btn btn-info" name="add">Add good</button>
+            <button type="submit" class="btn btn-warning" name="clear">Clear</button>
+            <button type="submit" class="btn btn-success" name="end">I'm done</button>
+        </div>
 
-    {% load static %}
+    </form>
+    <h4>Total value so far: ${{ total }}</h4>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'market/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'market/css/style.css' %}" />
-
-    <script src="{% static 'market/js/script.js' %}"></script>
-</body>
-</html>
+{% endblock %}

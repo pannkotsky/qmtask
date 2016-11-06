@@ -1,10 +1,11 @@
+from django.contrib.auth import mixins as auth_mixins
 from django import shortcuts
 from django.views import generic
 
 from market import models
 
 
-class IndexView(generic.TemplateView):
+class IndexView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
     template_name = 'market/index.html'
 
     def get_context_data(self, **kwargs):

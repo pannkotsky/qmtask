@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market</title>
+</head>
+<body>
+    {% autoescape on %}
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    {% endautoescape %}
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'market/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'market/css/style.css' %}" />
+
+</body>
+</html>
